@@ -1,0 +1,422 @@
+/* Importing Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f1ee;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+/* Header Styling */
+header {
+    padding: 1rem 0;
+    text-align: center;
+    color: #333333;
+    background-color: #e5e4df;
+}
+
+nav {
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #000000;
+}
+
+/* Container Layout for Main Content */
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+}
+
+/* Intro Section Layout */
+.intro {
+    display: flex;
+    align-items: center;
+    padding: 60px 20px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+/* Image Styling */
+.intro-image {
+    flex: 0 0 200px;
+    max-width: 200px;
+    text-align: center;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.intro-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(191, 169, 128, 0.5);
+    border: 5px solid #f1f0ec;
+}
+
+/* Text Content */
+.intro-text {
+    flex: 1;
+    color: #333333;
+    text-align: left;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+h2.greeting,
+.intro h2 {
+    color: #bfa980;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 40px 0 20px;
+    letter-spacing: 1px;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    color: #555555;
+    margin: 10px 0;
+    font-weight: 300;
+}
+
+/* Specific Styling for Experience Section */
+.experience {
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.experience h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #bfa980;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.experience-content {
+    color: #555555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+    text-align: justify;
+}
+
+/* General Styling for Education Section */
+.education {
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    text-align: left;
+}
+
+.education h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #bfa980;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.education-content {
+    color: #555555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.degree {
+    margin-bottom: 20px;
+}
+
+.degree h3 {
+    font-size: 1.5rem;
+    color: #333333;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.degree p {
+    font-size: 1.1rem;
+    color: #555555;
+    font-weight: 300;
+    margin: 5px 0;
+}
+
+/* Portfolio Section */
+.portfolio .project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.project {
+    background-color: #fafafa;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 300px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #555555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.portfolio h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #bfa980;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.project h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #555555;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.project p {
+    margin-bottom: 1rem;
+    color: #555555;
+}
+
+/* Skills Section */
+.skills {
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.skills h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #bfa980;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.skills-content {
+    color: #555555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.skills ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.skills li {
+    margin: 0.5rem 0;
+    color: #555555;
+}
+
+/* Contact Section Layout */
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #bfa980;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    font-size: 1.1rem;
+    color: #555555;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.contact-info li {
+    font-size: 1.1rem;
+    color: #333333;
+    margin: 10px 0;
+    font-weight: 300;
+}
+
+.contact-info .email-link {
+    color: #0072b1;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.contact-info .email-link:hover {
+    color: #005582;
+    text-decoration: underline;
+}
+
+.contact-info .linkedin-link {
+    color: #d14836;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.contact-info .linkedin-link:hover {
+    color: #a63628;
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    color: #333333;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    font-style: italic;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* Hover Effect for Links */
+a:hover {
+    text-decoration: underline;
+    color: #000000;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .intro,
+    .experience-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .intro-text,
+    .experience-content {
+        text-align: center;
+    }
+
+    header {
+        padding: 0.8rem 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .portfolio .project-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .project {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact {
+        padding: 20px 10px;
+    }
+
+    .skills ul {
+        text-align: center;
+        padding: 0;
+    }
+
+    footer {
+        padding: 5px 0;
+    }
+
+    h2.greeting,
+    .intro h2,
+    .experience h2,
+    .education h2,
+    .portfolio h2,
+    .skills h2,
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    p, .experience-content, .education-content, .skills-content {
+        font-size: 1rem;
+    }
+}
