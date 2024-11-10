@@ -6,7 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    background-color: #f2f1ee;
+    background-color: hwb(60 96% 3%); /* Changed to a lighter color */
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -18,37 +18,80 @@ header {
     padding: 1rem 0;
     text-align: center;
     color: #333333;
-    background-color: #e5e4df;
+    background-color: #f0efeb; /* Lightened background color */
 }
 
+
 nav {
-    border-bottom: 1px solid #dddddd;
+    /*border-bottom: 1px solid #dddddd;*/ /* Removed border */
+    padding: 10px 100px 10px 20px;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
 nav ul {
     list-style: none;
+    margin-left: auto;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 nav ul li {
     margin-right: 20px;
 }
 
+/* Header Navigation Color Change Effect */
 nav ul li a {
-    color: #333333;
+    color: #777777; /* Default text color */
     text-decoration: none;
     font-weight: 600;
     font-size: 1.2rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    padding: 8px 12px;
+    border-radius: 4px; /* Rounded corners */
 }
 
 nav ul li a:hover {
-    color: #000000;
+    color: #333333; /* Keeps the text color consistent */
+    background-color: #e5e4df; /* Light background color that matches the style */
+}
+
+
+/* Hide the menu toggle button on larger screens */
+.menu-toggle {
+    display: none;
+}
+
+/* Show menu toggle button on small screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: inline-block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #777777;
+        padding: 0.5rem;
+        margin-right: 1rem;
+    }
+
+    /* Adjust the navigation for small screens */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        background-color: #e5e4df;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    /* Show menu when the 'show' class is added */
+    nav ul.show {
+        display: flex;
+    }
 }
 
 /* Container Layout for Main Content */
@@ -70,6 +113,32 @@ nav ul li a:hover {
     max-width: 900px;
 }
 
+/* Container to adjust the main content position */
+.content-container {
+    margin-left: 300px; /* Adjust the overall position */
+    padding-right: 0px;
+    
+}
+
+/* Adjust positioning for image and text */
+.intro {
+    display: flex; /* Align the image and text in a row */
+    align-items: center; /* Center vertically */
+    gap: 10px; /* Space between the image and text, adjust as needed */
+}
+
+.intro-image, .intro-text {
+    margin-left: 0; /* Remove any extra margin */
+}
+
+/* Adjust image size if needed */
+.intro-image img {
+    max-width: 100%; /* Ensure image does not overflow */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
 /* Image Styling */
 .intro-image {
     flex: 0 0 200px;
@@ -88,22 +157,146 @@ nav ul li a:hover {
     border: 5px solid #f1f0ec;
 }
 
+/* Adjust intro container for mobile view */
+@media (max-width: 768px) {
+    .intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding: 20px; /* Optional: Add padding for spacing */
+        width: 100%; /* Ensure the container takes the full width */
+    }
+
+    .intro-image {
+        margin-bottom: 15px; /* Add spacing between image and text */
+        max-width: 80%; /* Adjust size to fit within the screen */
+        display: block; /* Ensure it's treated as a block-level element */
+        text-align: center; /* Center the image within its container */
+    }
+
+    .intro-image img {
+        margin: 0 auto; /* Center the image */
+    }
+    .intro-text {
+        padding: 0; /* Remove side padding */
+        margin: 10px 0; /* Reduce margin for mobile view */
+    }
+
+    .intro-image, .social-icons, .intro-text h3.greeting, 
+    .intro-text h2, 
+    .intro-text h4.name {
+        margin: 5px 0; /* Reduce margin for tighter spacing */
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center; /* Center icons */
+        margin-top: 10px; /* Add space above icons */
+        gap: 10px; /* Adjust gap between icons */
+        width: 100%; /* Ensure full-width container */
+    }
+
+    .icon {
+        width: 30px; /* Reduce size for better fit */
+        height: 30px;
+        font-size: 1.2rem; /* Adjust icon size */
+    }
+
+    .download-cv {
+        margin-top: 15px; /* Add space above the button */
+    }
+}
+
+
+/* Styling for Download CV Button */
+.download-cv {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #bfa980; /* Gold-like color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px; /* Curved button */
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.download-cv:hover {
+    background-color: #9f8a6f; /* Darker shade on hover */
+}
+
+/* Styling for Social Icons */
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    margin-left: 130px;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Reduced size */
+    height: 30px; /* Reduced size */
+    border-radius: 50%; /* Circular shape */
+    background-color: #e6e6e6; /* Light grey background */
+    color: #333; /* Dark color for icons */
+    font-size: 1rem; /* Reduced font size */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+}
+
+.icon.linkedin {
+    background-color: #555555; /* Gold-like color matching other design elements */
+    color: #ffffff;
+}
+
+.icon.github {
+    background-color: #555555; /* Dark grey for a refined look */
+    color: #ffffff;
+}
+
+.icon:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    background-color: #a0805a; /* Darker gold for a hover effect */
+}
+
+
+
 /* Text Content */
 .intro-text {
     flex: 1;
     color: #333333;
-    text-align: left;
-    line-height: 1.6;
+    text-align: center;
+    line-height: 1.4; /* Adjust the overall line height */
     margin-top: 20px;
+    padding-right: 300px;
 }
 
-h2.greeting,
-.intro h2 {
+.intro-text h3.greeting {
+    color: #555555;
+    font-size: 1rem; /* Adjust font size if needed */
+    font-weight: 500; /* Adjust weight if needed */
+    margin-bottom: 2px; /* Further reduce space below h3 */
+}
+
+.intro-text h2 {
     color: #bfa980;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: 600;
-    margin: 40px 0 20px;
+    margin: 5px 0 10px; /* Reduce top and bottom margin */
     letter-spacing: 1px;
+}
+
+.intro-text h4 {
+    color: #777777; /* Adjust as needed */
+    font-size: 1.5rem; /* Adjust font size if needed */
+    margin: 2px 0; /* Minimal margin for tight spacing */
+    font-weight: 400;
 }
 
 .intro-text p {
@@ -113,72 +306,55 @@ h2.greeting,
     font-weight: 300;
 }
 
-/* Specific Styling for Experience Section */
-.experience {
-    padding: 40px 20px;
-    margin: 0 auto;
-    max-width: 900px;
-    text-align: center;
+/* Container for Education and Experience */
+.sections-container {
+    display: flex;
+    justify-content: center; /* Center the sections horizontally */
+    gap: 20px; /* Space between the two sections */
+    margin: 20px auto; /* Space around the container */
+    max-width: 1000px; /* Restrict maximum width */
 }
 
-.experience h2 {
-    font-size: 2.5rem;
+/* Styling for Individual Sections */
+.education, .experience {
+    background-color: #f8f8f8; /* Light background color */
+    border-radius: 12px; /* Curved corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 15px; /* Padding inside the boxes */
+    width: 40%; /* Adjust width */
+    max-width: 450px; /* Limit the width for smaller boxes */
+    font-size: 1rem; /* Consistent font size */
+    line-height: 1.5; /* Consistent line height */
+}
+
+/* Headings */
+.education h2, .experience h2 {
+    font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Space below headings */
     color: #bfa980;
     letter-spacing: 1px;
-    text-align: left;
+    text-align: center; /* Center-align the heading */
 }
 
-.experience-content {
-    color: #555555;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    font-weight: 300;
-    text-align: justify;
-}
-
-/* General Styling for Education Section */
-.education {
-    padding: 40px 20px;
-    margin: 0 auto;
-    max-width: 900px;
-    text-align: left;
-}
-
-.education h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #bfa980;
-    letter-spacing: 1px;
-    text-align: center;
-}
-
-.education-content {
-    color: #555555;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    font-weight: 300;
-    text-align: justify;
-}
-
-.degree {
-    margin-bottom: 20px;
-}
-
-.degree h3 {
-    font-size: 1.5rem;
+/* Content Styling */
+.degree h3, .experience-content p {
+    font-size: 1rem; /* Consistent font size */
     color: #333333;
-    font-weight: 600;
-    margin: 10px 0;
+    margin: 5px 0; /* Consistent spacing */
+    font-weight: 600; /* Same font weight */
 }
 
-.degree p {
-    font-size: 1.1rem;
+.degree p, .experience-content p {
+    font-size: 1rem; /* Consistent font size */
     color: #555555;
-    font-weight: 300;
-    margin: 5px 0;
+    margin: 5px 0; /* Consistent spacing */
+    font-weight: 300; /* Same font weight */
+}
+
+/* General Styling for Each Section */
+.degree, .experience-content {
+    margin-bottom: 15px; /* Consistent bottom margin */
 }
 
 /* Portfolio Section */
@@ -241,25 +417,29 @@ h2.greeting,
     text-align: left;
 }
 
-.skills-content {
-    color: #555555;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    font-weight: 300;
-    text-align: justify;
-}
-
+/* Box styling for each skill */
 .skills ul {
     list-style: none;
     padding: 0;
-    font-size: 1.1rem;
-    text-align: justify;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
 
 .skills li {
-    margin: 0.5rem 0;
+    background-color: #fafafa;
     color: #555555;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    font-weight: 300;
+    text-align: center;
+    min-width: 120px;
+    flex: 1 1 auto;
 }
+
 
 /* Contact Section Layout */
 .contact {
@@ -269,12 +449,15 @@ h2.greeting,
     padding: 40px 20px;
     margin: 0 auto;
     max-width: 900px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 .contact h2 {
     font-size: 2.5rem;
     font-weight: 600;
-    color: #bfa980;
+    color: #bfa980; /* Classy gold-brown */
     letter-spacing: 1px;
     text-align: center;
     margin-bottom: 20px;
@@ -285,138 +468,101 @@ h2.greeting,
     color: #555555;
     text-align: center;
     font-weight: 300;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Slightly increased space between text and form */
 }
 
-.contact-info {
-    list-style: none;
-    padding: 0;
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1px; /* Reduced gap between form elements */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact-form label {
+    font-size: 1rem;
+    color: #333333;
+    font-weight: 500;
+    margin-bottom: 0.5px; /* Reduced space below labels */
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #bfa980; /* Highlighted border color */
+}
+
+#contact-form button {
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #8a6d3b; /* Classy gold-brown */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+#contact-form button:hover {
+    background-color: #705a2b; /* Darker gold-brown */
+}
+
+#update-button {
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #705a2b; /* Darker gold-brown */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+#update-button:hover {
+    background-color: #8a6d3b; /* Classy gold-brown */
+}
+
+/* Message after submission */
+#message {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #4caf50; /* Green success message */
+    font-weight: 500;
     text-align: center;
 }
 
-.contact-info li {
-    font-size: 1.1rem;
-    color: #333333;
-    margin: 10px 0;
-    font-weight: 300;
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .contact {
+        padding: 20px 10px;
+    }
+
+    #contact-form {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
-.contact-info .email-link {
-    color: #0072b1;
-    font-weight: 600;
-    transition: color 0.3s ease;
-    text-decoration: none;
-}
 
-.contact-info .email-link:hover {
-    color: #005582;
-    text-decoration: underline;
-}
-
-.contact-info .linkedin-link {
-    color: #d14836;
-    font-weight: 600;
-    transition: color 0.3s ease;
-    text-decoration: none;
-}
-
-.contact-info .linkedin-link:hover {
-    color: #a63628;
-    text-decoration: underline;
-}
 
 /* Footer Styling */
 footer {
     color: #333333;
     text-align: center;
     padding: 10px 0;
-    margin-top: auto;
-    font-style: italic;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 300;
-}
-
-/* Hover Effect for Links */
-a:hover {
-    text-decoration: underline;
-    color: #000000;
-}
-
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-    .intro,
-    .experience-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .intro-image {
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .intro-text,
-    .experience-content {
-        text-align: center;
-    }
-
-    header {
-        padding: 0.8rem 0;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .container {
-        width: 95%;
-        padding: 10px;
-    }
-
-    .portfolio .project-grid {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .project {
-        width: 100%;
-        text-align: center;
-    }
-
-    .contact {
-        padding: 20px 10px;
-    }
-
-    .skills ul {
-        text-align: center;
-        padding: 0;
-    }
-
-    footer {
-        padding: 5px 0;
-    }
-
-    h2.greeting,
-    .intro h2,
-    .experience h2,
-    .education h2,
-    .portfolio h2,
-    .skills h2,
-    .contact h2 {
-        font-size: 2rem;
-    }
-
-    p, .experience-content, .education-content, .skills-content {
-        font-size: 1rem;
-    }
+    margin-top: 20px;
 }

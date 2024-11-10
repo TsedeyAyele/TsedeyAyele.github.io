@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Tsedey Ayele Feleke</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
+        <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li> 
-                <li><a href="about.html">About Me</a></li> 
-                <li><a href="education.html">Education</a></li>
+                <li><a href="about.html">About</a></li> 
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="experience.html">Experience</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -24,16 +25,159 @@
     <main>
         <section class="contact">
             <h2>Contact</h2>
-            <p>Feel free to reach out to me through email or connect with me on LinkedIn:</p>
-            <ul class="contact-info">
-                <li>Email: <a href="mailto:tsedey.feleke@gmail.com" class="email-link">tsedey.feleke@gmail.com</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/tsedey-ayele-029a6b28/" target="_blank" class="linkedin-link">Tsedey Ayele Feleke</a></li>
-            </ul>
+            <p>Please fill in the form below to contact me:</p>
+
+            <form id="contact-form">
+                <label for="contact-name">Name:</label>
+                <input type="text" id="contact-name" placeholder="Enter your name" required>
+                <br><br>
+                <label for="contact-email">Email:</label>
+                <input type="email" id="contact-email" placeholder="Enter your email" required>
+                <br><br>
+                <label for="contact-message">Message:</label>
+                <textarea id="contact-message" placeholder="Your message" required></textarea>
+                <br><br>
+                <button type="submit">Save Contact Info</button>
+                <button type="button" id="update-button" style="display:none;">Update Contact Info</button>
+            </form>
+
+            <div id="message"></div>
         </section>
     </main>
-
+    
     <footer>
         <p>&copy; 2024 Tsedey Ayele Feleke</p>
     </footer>
+
+    <script>
+        // JavaScript to handle menu toggle on mobile screens
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector("nav ul").classList.toggle("show");
+        });
+
+        // Open IndexedDB
+        let db;
+        const request = indexedDB.open("ContactData", 1);
+
+        // Create the database schema if it doesn't exist
+        request.onupgradeneeded = function(event) {
+            db = event.target.result;
+            if (!db.objectStoreNames.contains("contacts")) {
+                const store = db.createObjectStore("contacts", { keyPath: "id", autoIncrement: true });
+            }
+        };
+
+        // Handle success
+        request.onsuccess = function(event) {
+            db = event.target.result;
+            loadContactData();
+        };
+
+        // Handle error
+        request.onerror = function(event) {
+            console.error("Database error: " + event.target.errorCode);
+        };
+
+        // Save contact info to IndexedDB
+        function saveContactData(name, email, message) {
+            const transaction = db.transaction(["contacts"], "readwrite");
+            const store = transaction.objectStore("contacts");
+
+            const contact = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            const request = store.add(contact);
+
+            request.onsuccess = function() {
+                showMessage("Contact information saved successfully!");
+                loadContactData();
+            };
+
+            request.onerror = function() {
+                showMessage("Error saving contact information!");
+            };
+        }
+
+        // Update contact info in IndexedDB
+        function updateContactData(id, name, email, message) {
+            const transaction = db.transaction(["contacts"], "readwrite");
+            const store = transaction.objectStore("contacts");
+
+            const contact = {
+                id: id,
+                name: name,
+                email: email,
+                message: message
+            };
+
+            const request = store.put(contact);
+
+            request.onsuccess = function() {
+                showMessage("Contact information updated successfully!");
+                loadContactData();
+            };
+
+            request.onerror = function() {
+                showMessage("Error updating contact information!");
+            };
+        }
+
+        // Load the last saved contact info
+        function loadContactData() {
+            const transaction = db.transaction(["contacts"], "readonly");
+            const store = transaction.objectStore("contacts");
+
+            const request = store.getAll();
+            request.onsuccess = function(event) {
+                const contacts = event.target.result;
+                if (contacts.length > 0) {
+                    const lastContact = contacts[contacts.length - 1];
+                    document.getElementById("contact-name").value = lastContact.name;
+                    document.getElementById("contact-email").value = lastContact.email;
+                    document.getElementById("contact-message").value = lastContact.message;
+                    document.getElementById("update-button").style.display = "inline-block";
+                } else {
+                    document.getElementById("update-button").style.display = "none";
+                }
+            };
+        }
+
+        // Handle form submission
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("contact-name").value;
+            const email = document.getElementById("contact-email").value;
+            const message = document.getElementById("contact-message").value;
+
+            saveContactData(name, email, message);
+        });
+
+        // Handle update button click
+        document.getElementById("update-button").addEventListener("click", function() {
+            const name = document.getElementById("contact-name").value;
+            const email = document.getElementById("contact-email").value;
+            const message = document.getElementById("contact-message").value;
+
+            const transaction = db.transaction(["contacts"], "readonly");
+            const store = transaction.objectStore("contacts");
+            const request = store.getAll();
+            request.onsuccess = function(event) {
+                const contacts = event.target.result;
+                if (contacts.length > 0) {
+                    const lastContact = contacts[contacts.length - 1];
+                    updateContactData(lastContact.id, name, email, message);
+                }
+            };
+        });
+
+        // Show message to user
+        function showMessage(message) {
+            document.getElementById("message").innerText = message;
+        }
+    </script>
 </body>
 </html>
