@@ -173,7 +173,12 @@ nav ul li a:hover {
         margin-bottom: 15px; /* Add spacing between image and text */
         max-width: 80%; /* Adjust size to fit within the screen */
         display: block; /* Ensure it's treated as a block-level element */
-        text-align: center; /* Center the image within its container */
+        display: block;
+        margin: 0 auto 15px auto; /* Center the image horizontally and add bottom margin */
+        max-width: 80%; /* Responsive size */
+        text-align: center; 
+                    
+        
     }
 
     .intro-image img {
@@ -196,6 +201,7 @@ nav ul li a:hover {
         margin-top: 10px; /* Add space above icons */
         gap: 10px; /* Adjust gap between icons */
         width: 100%; /* Ensure full-width container */
+       
     }
 
     .icon {
@@ -276,6 +282,23 @@ nav ul li a:hover {
     margin-top: 20px;
     padding-right: 300px;
 }
+
+.about-text {
+    max-width: 800px; /* Set a maximum width to prevent text from being too wide */
+    margin: 0 auto; /* Center the text block */
+    padding: 20px; /* Add padding for better spacing */
+    line-height: 1.6; /* Improve readability */
+    font-size: 1.1rem; /* Adjust font size for better view */
+    text-align: justify; /* Align text evenly on both sides */
+}
+
+@media (max-width: 768px) {
+    .intro-text {
+        padding: 15px; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Decrease font size for mobile readability */
+    }
+}
+
 
 .intro-text h3.greeting {
     color: #555555;
