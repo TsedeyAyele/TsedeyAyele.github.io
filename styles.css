@@ -336,6 +336,8 @@ nav ul li a:hover {
     gap: 20px; /* Space between the two sections */
     margin: 20px auto; /* Space around the container */
     max-width: 1000px; /* Restrict maximum width */
+    margin-top: 10px; /* Reduce top margin to minimize space */
+    padding-top: 0; /* Ensure no additional padding at the top */
 }
 
 /* Styling for Individual Sections */
